@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Peças</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Editar Peças</h1>
+
+    <form action="/pecas/atualizar/{{ peca[0] }}" method="POST">
+        <label>Nome da Peça</label>
+    <input type="text" name="nome_peca" maxlength="100" required>
+
+    <label>Quantidade</label>
+    <input type="text" name="quantidade" maxlength="100" required>
+
+    <label>Marca</label>
+    <input type="text" name="marca" maxlength="100" required>
+
+    <label>Preço</label>
+    <input type="text" name="preco" maxlength="100" required>
+
+
+        <button type="submit">Salvar alterações</button>
+    </form>
+
+    <a href="/pecas">Cancelar e voltar</a>
+</body>
+</html>
+

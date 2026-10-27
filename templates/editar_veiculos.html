@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar veículo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <h1>Editar veículo</h1>
+
+    <form action="/veiculos/atualizar/{{ veiculo[0] }}" method="POST">
+
+        <label>Placa:</label>
+        <input type="text" name="placa" value="{{ veiculo[1] }}" required>
+
+        <label>Modelo:</label>
+        <input type="text" name="modelo" value="{{ veiculo[2] }}" required>
+
+        <label>Ano:</label>
+        <input type="number" name="ano" value="{{ veiculo[3] }}" required>
+
+        <label>Data de entrada:</label>
+        <input type="date" name="data_entrada" value="{{ veiculo[4] }}" required>
+
+        <button type="submit">Salvar alterações</button>
+
+    </form>
+
+    <a href="/veiculos">Voltar para veículos</a>
+    <a href="/">Voltar para página inicial</a>
+
+</body>
+</html>

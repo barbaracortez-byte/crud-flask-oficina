@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Veículos</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<h1>Lista de Veículos</h1>
+
+<form action= "/veiculos/enviar" method="POST">
+    <label>Placa:</label>
+    <input type="text" name="placa" maxlength="100" required>
+
+    <label>Modelo:</label>
+    <input type="text" name="modelo" maxlength="100" required>
+
+    <label>Ano:</label>
+    <input type="number" name="ano" maxlength="100" required>
+
+    <label>Data de Entrada:</label>
+    <input type="date" name="data_entrada" maxlength="100" required>
+
+    <button type="submit">Adicionar veículo</button>
+</form>
+<table>
+    <tr>
+        <th>#</th>
+        <th>Placa</th>
+        <th>Modelo</th>
+        <th>Ano</th>
+        <th>Data de Entrada</th>
+        <th>Ações</th>
+    </tr>
+
+    {% for veiculo in veiculos %}
+    <tr>
+        <td>{{ veiculo[0] }}</td>
+        <td>{{ veiculo[1] }}</td>
+        <td>{{ veiculo[2] }}</td>
+        <td>{{ veiculo[3] }}</td>
+        <td>{{ veiculo[4] }}</td>
+        <td class="acoes">
+            <a class="botao editar" href="/veiculos/editar/{{ veiculo[0] }}">Editar</a>
+            <form action="/veiculos/excluir/{{ veiculo[0] }}" method="POST">
+                <button type="submit">Excluir</button>
+            </form>
+        </td>
+    </tr>
+    {% else %}
+    <tr>
+        <td colspan="4">Nenhum veículo cadastrado.</td>
+    </tr>
+    {% endfor %}
+<div class="botoes-navegacao">
+    <a href="/">Voltar para a página inicial</a>
+    <a href="/pecas">Gerenciar peças</a>
+</div>
+</table>
+
+</body>
+</html>
